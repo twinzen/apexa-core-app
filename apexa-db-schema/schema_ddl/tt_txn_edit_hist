@@ -1,0 +1,26 @@
+CREATE TABLE tt_txn_edit_hist (
+	tehid INT UNSIGNED PRIMARY KEY ,
+	txnid INT UNSIGNED NOT NULL ,
+	exp_dt_tm DATETIME NOT NULL ,
+	exe_prc DECIMAL (19,5)  ,
+	qty DECIMAL (19,5)  ,
+	prip_amt_locl DECIMAL (19,5)  ,
+	setl_dt_tm DATETIME  ,
+	setl_amt_setl DECIMAL (19,5)  ,
+	setl_locl_rate DECIMAL (24,10)  ,
+	setl_locl_rate_dt_tm DATETIME  ,
+	mkt_val_locl DECIMAL (19,5)  ,
+	mkt_val_acct DECIMAL (19,5)  ,
+	mkt_val_base DECIMAL (19,5)  ,
+	bk_cost_locl DECIMAL (19,5)  ,
+	bk_cost_acct DECIMAL (19,5)  ,
+	bk_cost_base DECIMAL (19,5)  ,
+	narr_txt VARCHAR (100)  ,
+	txn_rmk VARCHAR (12)  ,
+	edit_rmk_txt VARCHAR (100)  ,
+	edit_staf_id VARCHAR (12)  ,
+	crt_dt_tm DATETIME NOT NULL ,
+	updt_dt_tm DATETIME NOT NULL 
+);
+
+CREATE INDEX x1_txn_edit_hist ON tt_txn_edit_hist (txnid);

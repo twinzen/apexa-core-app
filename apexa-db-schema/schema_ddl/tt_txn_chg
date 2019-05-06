@@ -1,0 +1,12 @@
+CREATE TABLE tt_txn_chg (
+	chgid INT UNSIGNED PRIMARY KEY,
+	txnid INT UNSIGNED NOT NULL,
+	chg_type_cde VARCHAR (12) ,
+	chg_desc VARCHAR (40) ,
+	chg_amt_locl DECIMAL (19,5) ,
+	chg_amt_setl DECIMAL (19,5) ,
+	chg_amt_base DECIMAL (19,5) ,
+	narr_tex VARCHAR (100) 
+) ;
+
+CREATE INDEX x1_txn_chg ON tt_txn_chg (txnid);

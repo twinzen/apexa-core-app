@@ -1,0 +1,37 @@
+CREATE TABLE tt_acct_mast (
+	acid INT UNSIGNED PRIMARY KEY ,
+	acct_ext_cde_pri VARCHAR (60)  ,
+	acct_name VARCHAR (60)  ,
+	acct_mthd VARCHAR (3) NOT NULL ,
+	acct_ccy VARCHAR (3) NOT NULL ,
+	strt_dt_tm DATETIME NOT NULL ,
+	term_dt_tm DATETIME NOT NULL ,
+	acct_stat VARCHAR (1) NOT NULL ,
+	crt_dt_tm DATETIME NOT NULL ,
+	updt_dt_tm DATETIME NOT NULL 
+);
+
+CREATE INDEX x1_acct_mast ON tt_acct_mast (acct_ext_cde_pri, acct_stat);
+CREATE UNIQUE INDEX u1_acct_mast ON tt_acct_mast (acct_ext_cde_pri, acct_stat, term_dt_tm);
+
+insert into tt_acct_mast (
+acid,
+acct_ext_cde_pri,
+acct_mthd,
+acct_ccy,
+strt_dt_tm,
+term_dt_tm,
+acct_stat,
+crt_dt_tm,
+updt_dt_tm
+) select 
+acid, 
+acno, 
+acct_mthd, 
+'HKD', 
+strt_dt_tm,
+term_dt_tm,
+'A',
+sysdate(),
+sysdate()
+from acct_mast;

@@ -1,0 +1,43 @@
+CREATE TABLE tt_sec_mast (
+	secid INT UNSIGNED PRIMARY KEY ,
+	sec_cde_pri VARCHAR (20) NOT NULL ,
+	sec_type_cde VARCHAR (3) NOT NULL ,
+	name VARCHAR (60)  ,
+	locl_ccy VARCHAR (3) NOT NULL ,
+	src_sys_cde VARCHAR (12) NOT NULL ,
+	prc_div INT UNSIGNED,
+	mtur_dt DATETIME,
+	sec_stat VARCHAR (1) NOT NULL ,
+	dlst_dt_tm DATETIME NOT NULL ,
+	crt_dt_tm DATETIME NOT NULL ,
+	updt_dt_tm DATETIME NOT NULL 
+);
+
+CREATE INDEX x1_sec_mast ON tt_sec_mast (sec_cde_pri, sec_stat);
+CREATE UNIQUE INDEX u1_sec_mast ON tt_sec_mast (sec_cde_pri, sec_stat, dlst_dt_tm);
+
+insert into tt_sec_mast (
+secid,
+sec_cde_pri,
+sec_type_cde,
+name,
+locl_ccy,
+src_sys_cde,
+prc_div,
+sec_stat,
+dlst_dt_tm,
+crt_dt_tm,
+updt_dt_tm
+) select 
+secid,
+secCde,
+'UT',
+name,
+ccy,
+'WPC',
+1,
+'A',
+'3999-12-31',
+sysdate(),
+sysdate()
+from sec_mast;

@@ -1,0 +1,12 @@
+CREATE TABLE tt_sec_cde (
+	scdeid INT UNSIGNED PRIMARY KEY ,
+	secid INT UNSIGNED NOT NULL ,
+	sec_cde_alt VARCHAR (20) NOT NULL ,
+	sec_cde_alt_type VARCHAR (12) NOT NULL ,
+	crt_dt_tm DATETIME NOT NULL ,
+	updt_dt_tm DATETIME NOT NULL 
+);
+
+CREATE INDEX x1_sec_cde ON tt_sec_cde (secid);
+CREATE UNIQUE INDEX u1_sec_cde ON tt_sec_cde (secid, sec_cde_alt_type);
+CREATE UNIQUE INDEX u2_sec_cde ON tt_sec_cde (sec_cde_alt, sec_cde_alt_type);

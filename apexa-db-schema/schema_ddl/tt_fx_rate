@@ -1,0 +1,13 @@
+CREATE TABLE tt_fx_rate (
+	fxid INT UNSIGNED PRIMARY KEY ,
+	from_ccy VARCHAR (3) NOT NULL ,
+	to_ccy VARCHAR (3) NOT NULL ,
+	rate DECIMAL (24,10) NOT NULL ,
+	eff_dt_tm DATETIME NOT NULL ,
+	exp_dt_tm DATETIME NOT NULL ,
+	crt_dt_tm DATETIME NOT NULL ,
+	updt_dt_tm DATETIME NOT NULL 
+);
+
+CREATE UNIQUE INDEX u1_fx_rate ON tt_fx_rate (from_ccy, to_ccy, exp_dt_tm);
+CREATE UNIQUE INDEX u2_fx_rate ON tt_fx_rate (from_ccy, to_ccy, eff_dt_tm, exp_dt_tm);

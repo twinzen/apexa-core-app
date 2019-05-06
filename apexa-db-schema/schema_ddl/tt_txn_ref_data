@@ -1,0 +1,6 @@
+CREATE TABLE tt_txn_ref_data (
+	txnid INT UNSIGNED NOT NULL ,
+	ref_data VARCHAR (4000)  ,
+	crt_dt_tm DATETIME NOT NULL ,
+	updt_dt_tm DATETIME NOT NULL 
+);
